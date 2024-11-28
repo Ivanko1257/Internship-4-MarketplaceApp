@@ -19,15 +19,9 @@ namespace Domain.Repositorys.UserRepository
                 {
                     pickedUser = user;
                 }
-                else if (email == "/SIGNUP")
-                {
-                    return null;
-                }
+                else if (email == "/SIGNUP") return null;
             }
-            if (pickedUser == null)
-            {
-                return null;
-            }
+            if (pickedUser == null) return null;
             return pickedUser;
         }
     }
