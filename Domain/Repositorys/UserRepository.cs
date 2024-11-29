@@ -6,10 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repositorys.UserRepository
+namespace Domain.Repositorys
 {
-    public static class LogIn
+    public static class UserRepository
     {
+        public static void AddUser(User user)
+        {
+            UsersAndProductsData.users.Add(Guid.NewGuid(), user);
+        }
         public static User FindingUser(string email)
         {
             User pickedUser = null;

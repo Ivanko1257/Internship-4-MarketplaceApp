@@ -11,11 +11,13 @@ namespace Data.Entities.Models
         public string userName { get; set; }
         public string userSurname { get; set; }
         public string userEmail { get; set; }
+        public Guid id { get; }
         public User(string name, string surname, string email)
         {
             userName = name;
             userSurname = surname;
             userEmail = email;
+            id = Guid.NewGuid();
         }
     }
 }

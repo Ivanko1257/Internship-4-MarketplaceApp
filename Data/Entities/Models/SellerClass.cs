@@ -9,8 +9,9 @@ namespace Data.Entities.Models
     public class Seller : User
     {
         public double profitFromProducts;
-        public List<Guid> productsOfSeller;
-        public Seller(string name, string surname, string email, List<Guid> products) : base(name, surname, email)
+        public List<Product> productsOfSeller;
+        public List<Transaction> transactionsOfSellersProducts = new List<Transaction>();
+        public Seller(string name, string surname, string email, List<Product> products) : base(name, surname, email)
         {
             profitFromProducts = 0;
             productsOfSeller = products;

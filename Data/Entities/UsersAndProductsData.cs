@@ -12,5 +12,6 @@ namespace Data.Entities
     {
         public static Dictionary<Guid, User> users{ get; set; } = Seeds.Seeds.Users;
         public static Dictionary<Guid, Product> products { get; set; } = Seeds.Seeds.Products;
+        public static List<string> productCategories { get; set; } = new List<string>() {"školski pribor", "pića", "hrana"};
     }
 }

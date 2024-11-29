@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repositorys.UserRepository
+namespace Presentation.HomePage
 {
-    internal class SignUp
+    internal class HomePageForBuyer
     {
     }
 }
