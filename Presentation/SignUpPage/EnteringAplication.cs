@@ -5,6 +5,7 @@ using Domain.Repositorys;
 using Presentation.HomePage;
 using System;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -42,7 +43,21 @@ namespace Presentation.SignUpPage
             }
             UserRepository.AddUser(pickedUser);
             if (pickedUser is Seller) HomePageForSeller.SellerPage((Seller) pickedUser);
-            if (pickedUser is Buyer) HomePageForBuyer.BuyerPage((Buyer) pickedUser);
+            if (pickedUser is Buyer)
+            {
+                Buyer pickedUserBuyer = (Buyer)pickedUser;
+                Console.Write("Upišite svoje stanje računa: ");
+                int balanceCheck = 0;
+                while(true)
+                {
+                    string trySetBalanceCheck = Console.ReadLine();
+                    if (trySetBalanceCheck == "") Entry();
+                    int.TryParse(trySetBalanceCheck, out balanceCheck);
+                    if (balanceCheck == pickedUserBuyer.userBalance) HomePageForBuyer.BuyerPage((Buyer)pickedUser);
+                    else Console.Write("Stanje računa nije točno. Pokušajte ponovo: ");
+                    
+                }
+            }
 
         }
         public static User CreatingUser()

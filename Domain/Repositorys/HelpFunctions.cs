@@ -29,7 +29,11 @@ namespace Domain.Repositorys
                 confirmationCheck = Console.ReadLine();
                 if (confirmationCheck.ToLower() == "da") return true;
                 else if (confirmationCheck.ToLower() == "ne") break;
-                else Console.Write("Odgovor nije validan. Pokušajte ponovo: ");
+                else
+                {
+                    Console.Write("Odgovor nije validan. Pokušajte ponovo: ");
+                    confirmationCheck = null;
+                }
             }
             return false;
         }

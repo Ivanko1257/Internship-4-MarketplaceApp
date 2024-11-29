@@ -62,5 +62,11 @@ namespace Data.Entities.Seeds
             {product8.id,product8},
             {product9.id,product9}
         };
+        public static List<string> Cupons = new List<string>()
+        {
+            "$V0LIMDUMP$",
+            "$CES@RICA$",
+            "$M@HUNA$"
+        };
     }
 }

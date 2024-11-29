@@ -88,7 +88,7 @@ namespace Presentation.HomePage
                             }
                         }
 
-                        Console.WriteLine("Želite li dodati ovaj proizvod?(Da,Ne)");
+                        Console.Write("Želite li dodati ovaj proizvod?(Da,Ne)");
                         if(HelpFunctions.IsOperationConfirmed())
                         {
                             seller.productsOfSeller.Add(SellerFunctions.AddProduct(newProductName, newProductDescription, newProductCategory, newProductPrice, seller));
@@ -109,7 +109,7 @@ namespace Presentation.HomePage
                             if (!SellerFunctions.IsCategoryValid(pickedCategory))
                             {
                                 pickedCategory = null;
-                                Console.WriteLine("Kategorija ne postoji. Pokušajte ponovo: ");
+                                Console.Write("Kategorija ne postoji. Pokušajte ponovo: ");
                             }
                             else
                             {
@@ -129,7 +129,31 @@ namespace Presentation.HomePage
                         if (isCategoryEmpty) Console.WriteLine("Nemate proizvoda u ovoj kategoriji");
                         break;
                     case 4:
-                        Console.WriteLine("skjasd");
+                        Console.Clear();
+                        bool requestToBreak = false;
+                        Console.Write("Upišite datum i vrijeme od kojeg želite pregledavati zaradu(MM/DD/YY hh:mm:ss): ");
+                        DateTime dateTimeToView = DateTime.MinValue;
+                        while(dateTimeToView >=  DateTime.Now || dateTimeToView == DateTime.MinValue)
+                        {
+                            string tryToSetDateTimeToView = Console.ReadLine();
+                            if(tryToSetDateTimeToView=="")
+                            {
+                                requestToBreak= true;
+                                break;
+                            }
+                            dateTimeToView = DateTime.Parse(tryToSetDateTimeToView);
+                            if (dateTimeToView >= DateTime.Now || dateTimeToView == DateTime.MinValue) Console.Write("Uneseno vrijeme nije valjano. Pokušajte ponovo: ");
+                        }
+                        if (requestToBreak) break;
+                        double profitToView = 0;
+                        foreach(var transaction in seller.transactionsOfSellersProducts)
+                        {
+                            if(transaction.timeOfTransaction < dateTimeToView)
+                            {
+                                profitToView += BuyerFunctions.FindProduct(transaction.idOfProduct.ToString()).productPrice;
+                            }
+                        }
+                        Console.WriteLine("U tom vremenu ste imali zaradu od: " + profitToView);
                         Console.ReadKey();
                         break;
                 }
