@@ -12,12 +12,12 @@ namespace Data.Entities.Models
         public Buyer buyerOfProduct { get; }
         public Seller sellerOfProduct { get; }
         public DateTime timeOfTransaction { get; }
-        public Transaction(Guid id, Buyer buyer, Seller seller, DateTime time)
+        public Transaction(Guid id, Buyer buyer, Seller seller)
         {
             idOfProduct = id;
             buyerOfProduct = buyer;
             sellerOfProduct = seller;
-            timeOfTransaction = time;
+            timeOfTransaction = DateTime.Now;
         }
 
     }

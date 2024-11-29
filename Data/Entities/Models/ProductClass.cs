@@ -15,8 +15,8 @@ namespace Data.Entities.Models
         public string productCategory { get; set; }
         public double productPrice { get; set; }
         public ProductStatus productStatus { get; set; }
-        public User sellerOfProduct { get; }
-        public Product(string name, string description, string category, double price, User seller)
+        public Seller sellerOfProduct;
+        public Product(string name, string description, string category, double price, Seller seller)
         {
             productName = name;
             productDescription = description;

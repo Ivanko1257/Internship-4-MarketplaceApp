@@ -9,12 +9,12 @@ namespace Data.Entities.Models
     public class Buyer : User
     {
         public double userBalance { get; set; }
-        public List<Guid> productsInFavouritesIds { get; set; }
+        public List<Product> productsInFavourites { get; set; }
         public List<Transaction> transactionHistory { get; set; }
         public Buyer(string name, string surname, string email, double balance) : base(name, surname, email)
         {
             userBalance = balance;
-            productsInFavouritesIds = new List<Guid>();
+            productsInFavourites = new List<Product>();
             transactionHistory = new List<Transaction>();
         }
     }

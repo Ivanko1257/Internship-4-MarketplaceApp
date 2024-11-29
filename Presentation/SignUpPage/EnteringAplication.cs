@@ -1,5 +1,6 @@
 ﻿using Data.Entities;
 using Data.Entities.Models;
+using Data.Entities.Seeds;
 using Domain.Repositorys;
 using Presentation.HomePage;
 using System;
@@ -16,6 +17,7 @@ namespace Presentation.SignUpPage
         public static User pickedUser = null;
         public static void Main(string[] args)
         {
+            Seeds.SetUpSeeds();
             Entry();
         }
         public static void Entry()
@@ -40,6 +42,7 @@ namespace Presentation.SignUpPage
             }
             UserRepository.AddUser(pickedUser);
             if (pickedUser is Seller) HomePageForSeller.SellerPage((Seller) pickedUser);
+            if (pickedUser is Buyer) HomePageForBuyer.BuyerPage((Buyer) pickedUser);
 
         }
         public static User CreatingUser()
@@ -59,7 +62,7 @@ namespace Presentation.SignUpPage
             string emailForSignUp = null;
             while (emailForSignUp == null)
             {
-                emailForSignUp = CheckingForValid.CheckifEmailIsValid();
+                emailForSignUp = HelpFunctions.CheckifEmailIsValid();
                 if (emailForSignUp == "") return null;
                 else if (emailForSignUp == null) Console.Write("Uneseni email nije točan. Pokušajte ponovo: ");
             }

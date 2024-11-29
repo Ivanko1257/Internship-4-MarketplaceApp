@@ -36,7 +36,6 @@ namespace Presentation.HomePage
                         Console.Write("Operacija koju želite obaviti ne postoji. Pokušajte ponovo: ");
                     }
                 }
-
                 switch (pickedOperation)
                 {
                     case 1:
